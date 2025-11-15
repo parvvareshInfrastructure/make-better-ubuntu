@@ -19,7 +19,7 @@ jobs:
           bash -n makeBetterUbuntu.sh
           head -n 50 makeBetterUbuntu.sh # Show first 50 lines for log
       - name: Lint shell script
-        uses: ludeeus/action-shellcheck@v2
+        uses: ludeeus/action-shellcheck@master
         with:
           scandir: '.'
           ignore_paths: ''
