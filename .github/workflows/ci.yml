@@ -1,0 +1,26 @@
+name: Ubuntu Setup Script CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Make script executable
+        run: chmod +x makeBetterUbuntu.sh
+      - name: Run script (dry run)
+        run: |
+          bash -n makeBetterUbuntu.sh
+          head -n 50 makeBetterUbuntu.sh # Show first 50 lines for log
+      - name: Lint shell script
+        uses: ludeeus/action-shellcheck@v2
+        with:
+          scandir: '.'
+          ignore_paths: ''
+          severity: 'style'
