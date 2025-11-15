@@ -21,6 +21,32 @@ sudo apt install -y \
     gdebi \
     libfuse2
 
+# Extra system, productivity, and dev tools
+echo "Installing extra system, productivity, and dev tools..."
+sudo apt install -y \
+    htop \
+    neofetch \
+    tmux \
+    nmap \
+    gparted \
+    flameshot \
+    obs-studio \
+    zsh \
+    tree \
+    unzip \
+    ffmpeg \
+    jq
+
+# Install Oh My Zsh for better shell experience
+if [ "$SHELL" != "/usr/bin/zsh" ]; then
+    echo "Changing default shell to zsh..."
+    chsh -s $(which zsh)
+fi
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Installing Oh My Zsh..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true
+fi
+
 # Add repositories and keys
 echo "Setting up repositories and keys..."
 
