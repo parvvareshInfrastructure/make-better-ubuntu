@@ -40,7 +40,7 @@ sudo apt install -y \
 # Install Oh My Zsh for better shell experience
 if [ "$SHELL" != "/usr/bin/zsh" ]; then
     echo "Changing default shell to zsh..."
-    chsh -s $(which zsh)
+    chsh -s "$(which zsh)"
 fi
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Installing Oh My Zsh..."
@@ -110,7 +110,7 @@ pip install \
 # Configure Docker
 echo "Configuring Docker..."
 sudo systemctl enable docker
-sudo usermod -aG docker $USER
+sudo usermod -aG docker "$USER"
 
 # Install Snap packages
 echo "Installing Snap packages..."
